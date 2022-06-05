@@ -1,0 +1,88 @@
+.math-graph-item
+{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 24px 1fr;
+    overflow: hidden;
+    user-select: none;
+    min-width: 60px;
+    min-height: 36px;
+    border-width: 0px;
+    border-style: solid;
+    border-radius: 4px;
+    background-color: rgb(52 52 52 / 60%);
+    box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 40%);
+    padding-bottom: 4px;
+    header
+    {
+        grid-area: 1 / 1 / span 1 / span 2;
+        background-color: #888888;
+        color: rgb(230, 230, 230);
+        display: flex;
+        cursor: move;
+        font-size: 11px;
+
+        .text
+        {
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top: 2px;
+            pointer-events: none;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    .content
+    {
+        position: relative;
+        padding: 0px 1px;
+        color: white;
+        .row
+        {
+            position: relative;
+        }
+        .left
+        {
+            padding-left: 18px;
+            .point {
+                left: 2px;
+            }
+            .text {
+                text-align: left;
+            }
+        }
+        .right
+        {
+            padding-right: 18px;
+            .point {
+                right: 2px;
+            }
+            .text {
+                text-align: right;
+            }
+        }
+    }
+    .text
+    {
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .point {
+        position: absolute;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: rgb(0, 0, 0);
+        border: 2px solid #415061;
+        cursor: pointer;
+    }
+    .point:hover {
+        border-color: #45a4ed;
+    }
+}

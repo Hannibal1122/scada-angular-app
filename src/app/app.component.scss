@@ -1,0 +1,20 @@
+nav
+{
+    display: flex;
+    background-color: #468dca;
+    padding: 0px 10px;
+    button
+    {
+        border-radius: 0px;
+        height: 40px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        background-color: #468dca;
+        text-decoration: underline;
+    }
+    button:hover
+    {
+        background-color: #2c70ac;
+    }
+}

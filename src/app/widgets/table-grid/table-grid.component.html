@@ -1,0 +1,28 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor = "let item of drawHeader">{{ item.name }}</th>
+                <ng-container *ngIf = "!_readonly">
+                    <th colspan="2"></th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let row of drawData;" (click) = "onRowClick(row)">
+                <td *ngFor = "let cell of row">{{ cell }}</td>
+                <ng-container *ngIf = "!_readonly">
+                    <td (click) = "onClickEdit(row)" style = "cursor: pointer; color: rgb(78, 129, 173);">
+                        <i class="fas fa-edit"></i>
+                    </td>
+                    <td (click) = "onClickRemove(row)" style = "cursor: pointer; color: rgb(165, 91, 91);">
+                        <i class="fas fa-times-circle"></i>
+                    </td>
+                </ng-container>
+            </tr>
+            <tr *ngIf = "!drawData.length">
+                <td [attr.colspan] = "drawHeader.length + (_readonly ? 0 : 2)">Нет данных для отображения</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

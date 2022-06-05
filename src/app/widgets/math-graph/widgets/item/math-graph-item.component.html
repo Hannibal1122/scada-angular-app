@@ -1,0 +1,30 @@
+<div class = "math-graph-item"
+    #item
+    [style.top] = "position.y + 'px'"
+    [style.left] = "position.x + 'px'">
+    <header
+        [style.background-color] = "color"
+        (mousedown) = "onMousedown($event)"
+        (mouseup) = "onMouseup($event)">
+        <div class = "text">{{ name }}</div>
+    </header>
+    <div class = "content">
+        <div *ngFor = "let point of _inputs" class = "row left">
+            <div class = "text">{{ point.key }}</div>
+            <div class = "point"
+                [attr.name] = "'input_' + point.key"
+                (contextmenu) = "onPointEvent($event, point.key, 'input', 'on-pointremove')"
+                (mousedown) = "onPointEvent($event, point.key, 'input', 'on-pointdown')"
+                (mouseup) = "onPointEvent($event, point.key, 'input', 'on-pointup')"></div>
+        </div>
+    </div>
+    <div class = "content">
+        <div *ngFor = "let point of _outputs" class = "row right">
+            <div class = "text">{{ point.key }}</div>
+            <div class = "point"
+                [attr.name] = "'output_' + point.key"
+                (mousedown) = "onPointEvent($event, point.key, 'output', 'on-pointdown')"
+                (mouseup) = "onPointEvent($event, point.key, 'output', 'on-pointup')"></div>
+        </div>
+    </div>
+</div>

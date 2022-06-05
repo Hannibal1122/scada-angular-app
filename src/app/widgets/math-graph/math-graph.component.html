@@ -1,0 +1,28 @@
+<div class = "container"
+    (mousemove) = "onMousemove($event)"
+    (mouseup) = "onMouseup()" #container>
+    <div style = "position: absolute; width: 100%; height: 1080px;">
+        <svg style = "width: 100%; height: 100%; pointer-events:none; position:absolute; top:0px; left: 0px;">
+            <ng-container *ngFor = "let link of links">
+                <!-- <path [attr.d] = "link.path" style = "stroke:green; stroke-width:2; fill:none;"/> -->
+                <line *ngFor = "let line of link.points"
+                    [attr.x1] = "line.a.x"
+                    [attr.y1] = "line.a.y"
+                    [attr.x2] = "line.b.x"
+                    [attr.y2] = "line.b.y"
+                    class = "line"/>
+            </ng-container>
+            <line *ngIf = "currentState.mousedown"
+                [attr.x1] = "selectedPoints.position.x"
+                [attr.y1] = "selectedPoints.position.y"
+                [attr.x2] = "currentState.position.x"
+                [attr.y2] = "currentState.position.y"
+                stroke = "red"/>
+        </svg>
+        <math-graph-item *ngFor = "let item of items"
+            [data] = "item"
+            (onEvent) = "onEvent($event)" #items></math-graph-item>
+    </div>
+    <button (click) = "appendNewItem()" style = "position: absolute; top: 5px; left: 5px">Добавить</button>
+    <button (click) = "removeItem()" style = "position: absolute; top: 5px; left: 105px">Удалить</button>
+</div>

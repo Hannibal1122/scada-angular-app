@@ -1,0 +1,54 @@
+<div class = "container">
+    <section style = "grid-area: span 1 / span 2; padding: 5px; position: sticky; top: 0px; background-color: white; box-shadow: 0 0px 3px 1px rgb(0 0 0 / 25%);">
+        <div style = "margin-bottom: 5px;">
+            <input [(ngModel)] = "value" placeholder="Значение"><button (click) = "appendData()" style = "margin-left: 5px;">Создать</button>
+        </div>
+        <div>
+            <label>
+                idFrom:
+                <select [(ngModel)] = "idFrom">
+                    <option *ngFor = "let o of table" [value] = "o.id">{{ o.value }}</option>
+                </select>
+            </label>
+            <label>
+                idType:
+                <select [(ngModel)] = "idType">
+                    <option *ngFor = "let o of table" [value] = "o.id">{{ o.value }}</option>
+                </select>
+            </label>
+            <label>
+                idTo: 
+                <select [(ngModel)] = "idTo">
+                    <option>0</option>
+                    <option *ngFor = "let o of table" [value] = "o.id">{{ o.value }}</option>
+                </select>
+            </label>
+            <button (click) = "createLink()" style = "margin-left: 5px;">Связать</button>
+            <button (click) = "getDataByIdType()" style = "margin-left: 5px;">Запросить</button>
+            <button (click) = "getDataByIdTypeRecursion()" style = "margin-left: 5px;">Запросить с рекурсией</button>
+        </div>
+    </section>
+    <div>Таблица данных</div>
+    <div>Таблица связей</div>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Значение</th>
+            <th>Дата создания</th>
+            <th></th>
+        </tr>
+        <tr *ngFor = "let row of table">
+            <td>{{ row.id }}</td>
+            <td>{{ row.value }}</td>
+            <td>{{ row.dateCreatedFormat }}</td>
+            <td><button (click) = "removeData(row.id)">Удалить</button></td>
+        </tr>
+    </table>
+    <table>
+        <tr *ngFor = "let row of links">
+            <td>{{ row.from?.value }}</td>
+            <td>{{ row.type?.value }}</td>
+            <td>{{ row.to?.value || "-" }}</td>
+        </tr>
+    </table>
+</div>
